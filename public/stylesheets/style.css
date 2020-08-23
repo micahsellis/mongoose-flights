@@ -6,3 +6,31 @@ body {
 a {
   color: #00B7FF;
 }
+
+body {
+  text-align: center;
+  padding: 20px;
+}
+table {
+  display: inline;
+}
+.button {
+  display: inline-block;
+  background: #4285f4;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 2px 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2px;
+  box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 300ms;
+  transition: all ease-in-out 300ms;
+}
+
+.button:hover {
+  box-shadow: 0px 17px 5px -5px rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(0px, -5px) scale(1.05);
+          transform: translate(0px, -5px) scale(1.05);
+}
