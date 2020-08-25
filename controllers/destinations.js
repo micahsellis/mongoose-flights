@@ -2,7 +2,8 @@ const Flight = require('../models/flight')
 
 
 module.exports = {
-    create
+    create,
+    delete: deleteDest
 }
 
 function create(req, res) {
@@ -14,4 +15,12 @@ function create(req, res) {
             .catch((err) => console.log(err))
     })
     .catch((err) => console.log(err));
+}
+
+function deleteDest (req, res) {
+    Flight.findById(req.params.flight, (err, flight) => {
+        let idx = flight.destination.findIndex(dest => dest._id == req.params.dest)
+        flight.destination.splice(idx, 1)
+        flight.save((err) => res.redirect(`/flights/${req.params.flight}`))
+    })
 }

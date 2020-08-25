@@ -1,58 +1,86 @@
 <%- include('../partials/header') %>
-
-<h2>Flight Details:</h2>
+        <a href="/flights/<%= flight._id %>" id="all" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Flight Details</span></span></a>
+        <a href="/flights" class="nav-link"><span class="nav-link-span"><span class="u-nav">All Flights</span></span></a>
+        <a href="/flights/new" class="nav-link"><span class="nav-link-span"><span class="u-nav">New Flight</span></span></a>
+      </div>
+    </nav>
+  </header>
+<main>
+<div class="top"><h2>Flight Details</h2></div>
 <section id="show-page">
-  <div>Airline: </div>
-  <div><%= flight.airline %></div>
-  <div>Airport: </div>
-  <div><%= flight.airport %></div>
-  <div>Flight Number: </div>
-  <div><%= flight.flightNo %></div>
-  <div>Departs: </div>
-  <div><%= flight.departs %></div>
-  <div>Destination(s): </div>   
-<% if (flight.destination.length) { %>
+  <div class="table">
+    <table class="tb1">
+      <thead>
+        <tr>
+          <th class="airline">Airline:</th>
+          <td class="td1"><%= flight.airline %> <i class="fa fa-plane"></i></td>
+        </tr>
+        <tr>
+          <th>Airport:</th>
+          <td class="td1"><%= flight.airport %> <i class="fas fa-city"></i></td>
+        </tr>
+        <tr>
+          <th>Flight #:</th>
+          <td class="td1"><%= flight.flightNo %> <i class="fa fa-hashtag"></i></td>
+        </tr>
+        <tr>
+          <th>Departure:</th>
+          <td class="td1"><%= flight.departs %> <i class="fas fa-clock"></i></td>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div><h2>Destination(s):</h2></div>
+  <% if (flight.destination.length) { %>
   <table>
     <thead>
       <tr>
-      	 <th>Airport</th>
+        <th>Airport</th>
         <th>Arrival Date</th>
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="tb1">
       <% flight.destination.forEach((f) => { %>
-        <tr>
-          <td><%= f.airport %></td>
-          <td><%= f.arrival %></td>
-          <td>
-              <a class="delete" data-doc="<%= flight._id %>">
-                    <button class="btn-pink">
-                        <span class="btn-gradient">
-                            <i class="fa fa-close"></i>
-                        </span>
-                        <span class="btn-text">Wrong</span>
-                    </button>
-              </a>
-          </td>
-        </tr>
+      <tr>
+        <th class="dest">
+            <i class="fas fa-city"></i>
+            <%= f.airport %></th>
+        <td class="td1"><%= f.arrival %></td>
+        <td class="detail">
+          <form action="/destinations/<%= flight._id %>/<%= f._id %>?_method=DELETE" method="POST">
+          <button class="delete" type="submit">
+            <span>remove</span>
+            <div class="icon">
+              <i class="fa fa-times"></i>
+              <i class="fa fa-check"></i>
+            </div>
+          </button>
+          </form>
+        </td>
+      </tr>
       <% }); %>
     </tbody>
   </table>
-<% } %>
+  <% } %>
 </section>
-
+<div class="forms">
 <h2>Enter a Destination:</h2>
 <form action="/flights/<%= flight._id %>/destinations" method="POST">
-    <label>Destination:</label>
-    <select name="airport">
-        <option value="AUS">AUS</option>
-        <option value="DFW">DFW</option>
-        <option value="DEN">DEN</option>
-        <option value="LAX">LAX</option>
-        <option value="SAN">SAN</option>
-    </select>
-    <label>Arrival Time:</label>
-    <input type="datetime-local" name="arrival">
-    <input type="submit" value="Add Destination">
+
+  <label>Destination:</label>
+  <select name="airport">
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select><br>
+
+  <label>Arrival Time:</label>
+  <input type="datetime-local" name="arrival" value=/><br>
+  <input type="submit" value="Submit" />
 </form>
+</div>
+<form action="/flights/<%= flight._id %>?_method=DELETE" method="POST" ><button class="remove" type="submit">DELETE FLIGHT</button></form>
+</main>

@@ -33,17 +33,21 @@ function newFlight(req, res) {
 }
 
 function deleteFlight(req, res) {
-    Flight.findByIdAndDelete(req.params.id)
-        .then((err, flight) => {
-        if (err) console.log(err);
-        res.send('Hello World!')
+    Flight.findByIdAndDelete(req.params.id, (err, docs) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Deleted : ", docs);
+            res.redirect('/flights')
+        }
     })
 }
 
 function show(req, res) {
     Flight.findById(req.params.id)
-        .then(result => {
-            res.render('flights/show', { flight: result, title: 'Flight Detail' })
+        .then((flights) => {
+            flights.destination.sort((a, b) => a.arrival - b.arrival);
+            res.render('flights/show', { flight: flights, title: 'Flight Detail' });
         })
         .catch((err) => console.log(err))
 }
