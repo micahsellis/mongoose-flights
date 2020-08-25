@@ -18,9 +18,12 @@ function create(req, res) {
 }
 
 function deleteDest (req, res) {
-    Flight.findById(req.params.flight, (err, flight) => {
-        let idx = flight.destination.findIndex(dest => dest._id == req.params.dest)
-        flight.destination.splice(idx, 1)
-        flight.save((err) => res.redirect(`/flights/${req.params.flight}`))
+    Flight.findById(req.params.flight)
+        .then(flight => {
+            let idx = flight.destination.findIndex(dest => dest._id == req.params.dest)
+            flight.destination.splice(idx, 1)
+            flight.save()
+                .then(res.redirect(`/flights/${req.params.flight}`))
+                .catch(err => console.log(err))
     })
 }

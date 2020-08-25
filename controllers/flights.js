@@ -1,5 +1,6 @@
 const Flight = require('../models/flight');
 const moment = require('moment')
+const Ticket = require('../models/ticket')
 
 module.exports = {
     index,
@@ -10,7 +11,7 @@ module.exports = {
 }
 
 function index(req, res) {
-    Flight.find()
+    Flight.find({})
         .then((flights) => {
             flights.sort((a, b) => a.departs - b.departs);
             res.render('flights/index', { flights, title: "All", moment})
@@ -33,21 +34,22 @@ function newFlight(req, res) {
 }
 
 function deleteFlight(req, res) {
-    Flight.findByIdAndDelete(req.params.id, (err, docs) => {
-        if (err) {
-            console.log(err);
-        } else {
+    Flight.findByIdAndDelete(req.params.id)
+        .then(docs => {
             console.log("Deleted : ", docs);
             res.redirect('/flights')
-        }
-    })
+        .catch(err => console.log(err))
+        })
 }
 
 function show(req, res) {
     Flight.findById(req.params.id)
         .then((flights) => {
-            flights.destination.sort((a, b) => a.arrival - b.arrival);
-            res.render('flights/show', { flight: flights, title: 'Flight Detail' });
+            flights.destination.sort((a, b) => a.arrival - b.arrival)
+            Ticket.find({ flight: flights._id })
+                .then((tickets) => {
+                    res.render('flights/show', { ticket: tickets, flight: flights, title: 'Flight Detail' })
+                })
+                .catch((err) => console.log(err))
         })
-        .catch((err) => console.log(err))
 }

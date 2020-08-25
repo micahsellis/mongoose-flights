@@ -421,3 +421,24 @@ h1.logo a, a:active, a:hover, a:visited {
   color: white;
   box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 2px 5px 0 rgba(0,0,0,0.19);
 }
+
+.tix {
+  margin: auto;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid #ccc;
+  width: 100px;
+}
+
+.tix:hover {
+  border: 2px solid rgb(41, 177, 211);
+  background-color: rgb(41, 177, 211);
+  color: white;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 2px 5px 0 rgba(0,0,0,0.19);
+}

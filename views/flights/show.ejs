@@ -82,5 +82,41 @@
   <input type="submit" value="Submit" />
 </form>
 </div>
+<br>
+<h2>Tickets: <button class="tix" onclick="window.location.href='/flights/<%= flight._id %>/tickets/new'">Add Ticket</button></h2>
+  <% if (ticket.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="tb1">
+      <% ticket.forEach((t) => { %>
+      <tr>
+        <th class="dest">
+            <i class="fas fa-chair"></i>
+            <%= t.seat %></th>
+        <td class="td1">
+          <i class="fas fa-dollar-sign"></i>
+          <%= t.price %></td>
+        <td class="detail">
+          <form action="/tickets/<%= t.flight %>/<%= t._id %>?_method=DELETE" method="POST">
+          <button class="delete" type="submit">
+            <span>remove</span>
+            <div class="icon">
+              <i class="fa fa-times"></i>
+              <i class="fa fa-check"></i>
+            </div>
+          </button>
+          </form>
+        </td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <% } %>
 <form action="/flights/<%= flight._id %>?_method=DELETE" method="POST" ><button class="remove" type="submit">DELETE FLIGHT</button></form>
 </main>
