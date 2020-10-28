@@ -1,9 +1,9 @@
-# mongoose-flights ![logo](https://i.imgur.com/Ya9CckQ.png)
+# ![logo|400x400, 20%](https://i.imgur.com/Ya9CckQ.png) Mongoose Flights
 My first App utilizing MongoDB, Mongoose, and the Express framework. All design was done using pure CSS (no frameworks here!). This app was a lab for the General Assembly Software Engineering Immersive program and I went above and beyond to make it worthy of my portfolio. 
 
 # Screenshots
 Home Page:
-![home page|400x400,20%](https://i.imgur.com/sGrdl5p.jpg)
+![home page](https://i.imgur.com/sGrdl5p.jpg)
 Flight Detail:
 ![flight details](https://i.imgur.com/v7SI25s.png)
 Add a New Flight:
