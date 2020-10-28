@@ -19,7 +19,7 @@ Add a New Flight:
 - HTML
 
 # Getting Started
-- [Link to the deployed App](https://mongooseflights.herokuapp.com/)
+- [Link to the deployed App on Heroku](https://mongooseflights.herokuapp.com/) Sometimes it is slow to load so please give it time!
 
 # Next Steps (Planned future enhancements)
 - Connect Flight tracking API for real time data
