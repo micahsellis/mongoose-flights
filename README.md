@@ -1,5 +1,5 @@
 # <img src="https://i.imgur.com/Ya9CckQ.png" width="100px"> Mongoose Flights
-My first App utilizing MongoDB, Mongoose, and the Express framework. All design was done using pure CSS (no frameworks here!). This app was a lab for the General Assembly Software Engineering Immersive program and I went above and beyond to make it worthy of my portfolio. 
+My first App utilizing MongoDB, Mongoose, and the Express framework. All design was done using pure CSS (no frameworks here!). This app was a lab for the General Assembly Software Engineering Immersive program and I went above and beyond to make it worthy of my portfolio. [Link to the deployed App](https://mongooseflights.herokuapp.com/)
 
 # Screenshots
 Home Page:
