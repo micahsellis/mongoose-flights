@@ -3,7 +3,7 @@ My first App utilizing MongoDB, Mongoose, and the Express framework. All design 
 
 # Screenshots
 Home Page:
-![home page](https://i.imgur.com/sGrdl5p.jpg)
+![home page|400x400,20%](https://i.imgur.com/sGrdl5p.jpg)
 Flight Detail:
 ![flight details](https://i.imgur.com/v7SI25s.png)
 Add a New Flight:
